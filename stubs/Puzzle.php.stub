@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+namespace AoC\Solutions\Y{YEAR}\D{DAY};
+
+use Aoc\Testing\TestRunner;
+
+class {PUZZLE}
+{
+    private string $inputData;
+
+    public function __construct(string $inputData)
+    {
+        $this->inputData = trim($inputData);
+    }
+
+    public function solve(): int
+    {
+        // TODO: Implement part {PUZZLE} solution
+        return 0;
+    }
+
+    public function test(TestRunner $t, string $testInput): void
+    {
+        $t->assertEquals(0, $this->solve(), 'Part {PUZZLE}');
+    }
+}
