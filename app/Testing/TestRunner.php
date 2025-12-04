@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aoc\Testing;
+namespace AoC\Testing;
 
 use Codedungeon\PHPCliColors\Color;
 

@@ -3,10 +3,11 @@
 declare(strict_types=1);
 
 use Clue\Commander\Router;
-use Aoc\Commands\CreateCommand;
-use Aoc\Commands\FetchCommand;
-use Aoc\Commands\RunCommand;
-use Aoc\Commands\TestCommand;
+use AoC\Commands\CreateCommand;
+use AoC\Commands\FetchCommand;
+use AoC\Commands\RunCommand;
+use AoC\Commands\TestCommand;
+use AoC\Commands\TraitCommand;
 use Codedungeon\PHPCliColors\Color;
 
 class App
@@ -78,6 +79,11 @@ class App
             return $cmd->execute();
         });
 
+        $this->router->add('trait <date> <name>', function (array $args) {
+            $cmd = new TraitCommand($args['date'], $args['name']);
+            return $cmd->execute();
+        });
+
         $app = $this;
         $this->router->add('[--help|-h]', function () use ($app) {
             $app->showHelp();
@@ -113,10 +119,11 @@ class App
         echo "  " . Color::GREEN . "-p, --part <A|B>" . Color::RESET . "  Part to run (for 'run' and 'test' commands)\n\n";
         
         echo Color::YELLOW . "Commands:\n" . Color::RESET;
-        echo "  " . Color::LIGHT_PURPLE . "create [YYYY/DD]" . Color::RESET . "    Create puzzle directory and file\n";
-        echo "  " . Color::LIGHT_PURPLE . "fetch [YYYY/DD]" . Color::RESET . "     Fetch puzzle input from AOC\n";
-        echo "  " . Color::LIGHT_PURPLE . "run [YYYY/DD]" . Color::RESET . "       Run puzzle solver\n";
-        echo "  " . Color::LIGHT_PURPLE . "test [YYYY/DD]" . Color::RESET . "      Run puzzle tests\n\n";
+        echo "  " . Color::LIGHT_PURPLE . "create [YYYY/DD]" . Color::RESET . "         Create puzzle directory and file\n";
+        echo "  " . Color::LIGHT_PURPLE . "fetch [YYYY/DD]" . Color::RESET . "          Fetch puzzle input from AOC\n";
+        echo "  " . Color::LIGHT_PURPLE . "run [YYYY/DD]" . Color::RESET . "            Run puzzle solver\n";
+        echo "  " . Color::LIGHT_PURPLE . "test [YYYY/DD]" . Color::RESET . "           Run puzzle tests\n";
+        echo "  " . Color::LIGHT_PURPLE . "trait <YYYY/DD> <name>" . Color::RESET . "  Create a trait for a solution\n\n";
         
         echo Color::YELLOW . "Date Format:\n" . Color::RESET;
         echo "  " . Color::CYAN . "YYYY/DD" . Color::RESET . "             Year and day (e.g., 2024/5 for Dec 5, 2024)\n";
@@ -131,6 +138,7 @@ class App
         echo "  php aoc run 2024/5 -p A        " . Color::DARK_GRAY . "# Run only part A\n" . Color::RESET;
         echo "  php aoc test 2024/5            " . Color::DARK_GRAY . "# Run tests for both parts\n" . Color::RESET;
         echo "  php aoc test 2024/5 -p A       " . Color::DARK_GRAY . "# Run only part A tests\n" . Color::RESET;
+        echo "  php aoc trait 2024/5 Helper    " . Color::DARK_GRAY . "# Create Helper trait for Dec 5\n" . Color::RESET;
     }
 }
 

@@ -4,17 +4,11 @@ declare(strict_types=1);
 
 namespace AoC\Solutions\Y{YEAR}\D{DAY};
 
-use Aoc\Testing\TestRunner;
+use AoC\Solutions\BaseSolution;
+use AoC\Testing\TestRunner;
 
-class {PUZZLE}
+class {PUZZLE} extends BaseSolution
 {
-    private string $inputData;
-
-    public function __construct(string $inputData)
-    {
-        $this->inputData = trim($inputData);
-    }
-
     public function solve(): int
     {
         // TODO: Implement part {PUZZLE} solution

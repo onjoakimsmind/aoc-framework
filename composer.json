@@ -2,7 +2,7 @@
   "name": "onjoakimsmind/aoc",
   "autoload": {
     "psr-4": {
-      "Aoc\\": "app/"
+      "AoC\\": "app/"
     },
     "files": [
       "app/helpers.php"

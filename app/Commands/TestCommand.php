@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aoc\Commands;
+namespace AoC\Commands;
 
 use Codedungeon\PHPCliColors\Color;
 
@@ -56,7 +56,7 @@ class TestCommand extends Command
                     return 1;
                 }
                 // Create separate test runner for each part
-                $runner = new \Aoc\Testing\TestRunner();
+                $runner = new \AoC\Testing\TestRunner();
                 $instance->test($runner, $testInput);
                 $runner->printResults();
                 $totalPassed += $runner->getPassed();

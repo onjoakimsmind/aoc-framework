@@ -1,0 +1,7 @@
+<?php
+
+namespace AoC\Solutions\Y{YEAR}\D{DAY};
+
+Trait {Name} {
+
+}
